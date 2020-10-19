@@ -13,6 +13,12 @@ cat.addProduct(new Product("A124", "Product 2", 100, 10.0));
 cat.addProduct(new Product("A125", "Product 3", 100, 10, 10.0));
 
 describe("Catalogue", () => {
+  beforeEach(() => {
+    cat = new Catalogue("Test Catalogue");
+    cat.addProduct(new Product("A123", "Product 1", 100, 10, 10.0, 10));
+    cat.addProduct(new Product("A124", "Product 2", 100, 10.0, 10));
+    cat.addProduct(new Product("A125", "Product 3", 100, 10, 10.0, 10));
+  });
   describe("findProductById", function () {
     it("should find a valid product id", function () {
       const result = cat.findProductById("A123");
@@ -59,4 +65,19 @@ describe("removeProductById", () => {
       const result = cat.checkReorders();
       expect(result.productIds).to.be.empty;
     });
+  });
+
+  describe("batchAddProducts", () => {
+    beforeEach(function () {
+      batch = {
+         type: 'Batch',
+        products: [
+          new Product("A126", "Product 6", 100, 10, 10.0, 10),
+          new Product("A127", "Product 7", 100, 10, 10.0, 10),
+        ],
+      };
+    });
+    
+   
+    
   });
